@@ -4,7 +4,7 @@ import { RootState } from '../store';
 
 const baseQuery = fetchBaseQuery({
   // TODO: move to dev and prod env localhost for dev and prod url for prod
-  baseUrl: `${import.meta.env.VITE_API_URL}/api`,
+  baseUrl: import.meta.env.VITE_API_URL || 'https://dummyjson.com',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).user.token;
 

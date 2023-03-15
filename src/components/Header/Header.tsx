@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
+import classes from './Header.module.scss';
 function Header() {
   const { i18n, t } = useTranslation();
   const languages = ['TR', 'EN'];
@@ -11,7 +11,7 @@ function Header() {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       {languages.map((language) => (
         <button key={language} onClick={() => changeLanguage(language)}>
           {language}
