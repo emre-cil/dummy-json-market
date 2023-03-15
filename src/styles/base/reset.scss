@@ -1,0 +1,25 @@
+@use '../abstracts/colors';
+
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  margin: 0;
+  padding: 0;
+  // color: colors.$black;
+  // background-color: colors.$white;
+  font-family: 'Lato', sans-serif;
+}
+
+.light {
+  // color: colors.$black;
+  // background-color: colors.$white;
+}
+
+.dark {
+  // color: colors.$white;
+  // background-color: colors.$black;
+}

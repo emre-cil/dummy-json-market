@@ -1,9 +1,16 @@
+import Header from '@/components/Header/Header';
 import React from 'react';
-import TemplateTester from '@/components/TemplateTester/TemplateTester';
-import Counter from '@/components/Counter/Counter';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-  return <div>home</div>;
+  const { t } = useTranslation();
+
+  return (
+    <div>
+      <Header />
+      {t('home.title')}
+    </div>
+  );
 };
 
 export default Home;
