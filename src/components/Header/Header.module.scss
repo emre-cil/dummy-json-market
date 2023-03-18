@@ -3,6 +3,7 @@
   width: 100%;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
+
 .container {
   height: 100%;
   display: flex;
@@ -30,11 +31,67 @@
       transition: all 0.3s ease-in-out;
     }
 
+    &.active {
+      color: #c37b07;
+      &::after {
+        width: 100%;
+      }
+    }
+
     &:hover {
       color: #c37b07;
       &::after {
         width: 100%;
       }
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  gap: 1rem;
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: #c37b07;
+    }
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+.dark {
+  // when page is opened rotate for 1 second
+  animation: flush 0.5s ease-in-out;
+  transform: rotateY(360deg);
+  opacity: 1;
+  @keyframes flush {
+    0% {
+      transform: rotateY(0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(360deg);
+      opacity: 1;
+    }
+  }
+}
+
+.light {
+  animation: rotate 0.5s ease-in-out;
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

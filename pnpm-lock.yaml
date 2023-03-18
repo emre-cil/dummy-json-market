@@ -20,6 +20,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-i18next: ^12.2.0
+  react-icons: ^4.8.0
   react-redux: ^8.0.5
   react-router-dom: ^6.9.0
   sass: ^1.59.3
@@ -33,6 +34,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-i18next: 12.2.0_ifcy7d6sq4oet2tbyvl27swb2m
+  react-icons: 4.8.0_react@18.2.0
   react-redux: 8.0.5_3xleytyzprlgycb2ded54tx72i
   react-router-dom: 6.9.0_biqbaboplfbrettd7655fr4n2y
 
@@ -2555,6 +2557,14 @@ packages:
       i18next: 22.4.12
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:

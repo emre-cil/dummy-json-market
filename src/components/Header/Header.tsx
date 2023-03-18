@@ -1,10 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classes from './Header.module.scss';
+import { MdLightMode, MdDarkMode } from 'react-icons/md';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectMode, changeMode } from '@/features/user/userSlice';
+
 function Header() {
+  const dispatch = useDispatch();
+  const mode = useSelector(selectMode);
+  const location = useLocation();
   const { i18n, t } = useTranslation();
-  const languages = ['TR', 'EN'];
 
   const changeLanguage = (code: string) => {
     localStorage.setItem('App_Language', code);
@@ -39,17 +45,18 @@ function Header() {
       <div className={`container-lg ${classes.container}`}>
         <div className={classes.header_links}>
           {links.map((link) => (
-            <Link key={link.id} to={link.path}>
+            <Link key={link.id} to={link.path} className={location.pathname === link.path ? classes.active : ''}>
               {link.title}
             </Link>
           ))}
         </div>
-        <div>
-          {languages.map((language) => (
-            <button key={language} onClick={() => changeLanguage(language)}>
-              {language}
-            </button>
-          ))}
+        <div className={classes.buttons}>
+          <button onClick={() => dispatch(changeMode())}>
+            {mode === 'light' ? <MdLightMode className={classes.light} /> : <MdDarkMode className={classes.dark} />}
+          </button>
+          <button onClick={() => changeLanguage(i18n.language === 'TR' ? 'EN' : 'TR')}>
+            {i18n.language === 'TR' ? 'EN' : 'TR'}
+          </button>
         </div>
       </div>
     </div>
