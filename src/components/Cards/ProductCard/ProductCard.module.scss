@@ -1,0 +1,31 @@
+.product_wrapper {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  img {
+    object-fit: cover;
+    height: 240px;
+    width: 100%;
+  }
+
+  //when hover
+  &:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+  }
+}
+.product_info {
+  height: 60px;
+  display: flex;
+  padding: 10px 20px;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+}

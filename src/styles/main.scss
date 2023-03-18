@@ -1,1 +1,17 @@
 @import './base/reset';
+
+.container-lg {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.container-md {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+}

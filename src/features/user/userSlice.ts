@@ -1,26 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
+
+type initialStateType = {
+  basket: any[];
+  mode: string;
+};
+
 const initialState = {
-  token: null,
-  user: null,
+  basket: [],
   mode: localStorage.getItem('mode')
     ? localStorage.getItem('mode')
     : window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light',
-};
+} as initialStateType;
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setCredentials: (state, action) => {
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-    },
-    setToken: (state, action) => {
-      state.token = action.payload;
-    },
     changeMode: (state) => {
       if (state.mode === 'light') {
         state.mode = 'dark';
@@ -30,15 +28,29 @@ export const userSlice = createSlice({
         localStorage.setItem('mode', 'light');
       }
     },
+
+    addToBasket: (state, action) => {
+      state.basket = [...state.basket, action.payload];
+    },
+
+    removeFromBasket: (state, action) => {
+      const index = state.basket.findIndex((basketItem) => basketItem.id === action.payload.id);
+
+      const newBasket = [...state.basket];
+
+      if (index >= 0) {
+        newBasket.splice(index, 1);
+      }
+
+      state.basket = newBasket;
+    },
   },
 });
 
-export const { setCredentials, setToken, changeMode } = userSlice.actions;
-
-export const selectToken = (state: RootState) => state.user.token;
-
-export const selectUser = (state: RootState) => state.user.user;
+export const { changeMode } = userSlice.actions;
 
 export const selectMode = (state: RootState) => state.user.mode;
+
+export const selectBasket = (state: RootState) => state.user.basket;
 
 export default userSlice.reducer;

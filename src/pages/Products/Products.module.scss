@@ -1,0 +1,9 @@
+.products {
+  width: 100%;
+  display: grid;
+  // small screens 1 column, medium screens 2 columns, large screens 3 columns and extra large screens 4 columns
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+}

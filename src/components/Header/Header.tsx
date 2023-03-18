@@ -11,13 +11,37 @@ function Header() {
     i18n.changeLanguage(code);
   };
 
+  const links = [
+    {
+      id: 1,
+      title: t('home'),
+      path: '/',
+    },
+    {
+      id: 2,
+      title: t('header.products'),
+      path: '/products',
+    },
+    {
+      id: 3,
+      title: t('header.favorites'),
+      path: '/favorites',
+    },
+    {
+      id: 4,
+      title: t('header.basket'),
+      path: '/basket',
+    },
+  ];
+
   return (
     <div className={classes.container}>
       <div className={classes.header_links}>
-        <Link to="/">{t('home')}</Link>
-        <Link to="/products">{t('header.products')}</Link>
-        <Link to="/favorites">{t('header.favorites')}</Link>
-        <Link to="/basket">{t('header.basket')}</Link>
+        {links.map((link) => (
+          <Link key={link.id} to={link.path}>
+            {link.title}
+          </Link>
+        ))}
       </div>
       <div>
         {languages.map((language) => (
