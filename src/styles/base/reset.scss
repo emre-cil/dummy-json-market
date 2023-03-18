@@ -5,6 +5,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 *,
 *::before,
@@ -19,7 +20,14 @@ body {
   width: 100%;
   // color: colors.$black;
   // background-color: colors.$white;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Exo 2', sans-serif;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: unset;
 }
 
 .light {

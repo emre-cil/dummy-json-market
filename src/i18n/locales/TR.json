@@ -1,5 +1,8 @@
 {
-  "home": {
-    "title": "Ana Sayfa"
+  "home": "Ana Sayfa",
+  "header": {
+    "products": "Ürünler",
+    "favorites": "Favoriler",
+    "basket": "Sepet"
   }
 }

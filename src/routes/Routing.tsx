@@ -6,6 +6,9 @@ import ContentWrapper from '@/components/ContentWrapper/ContentWrapper';
 import ProtectedRoute from './ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { selectToken } from '@/features/user/userSlice';
+import Products from '@/pages/Products/Products';
+import Favorites from '@/pages/Favorites/Favorites';
+import Basket from '@/pages/Basket/Basket';
 
 const Routing = () => {
   const accessToken = useSelector(selectToken);
@@ -19,6 +22,10 @@ const Routing = () => {
       <Route element={<ContentWrapper />}>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/basket" element={<Basket />} />
+
         <Route element={<ProtectedRoute isLoading={false} hasRefresh={hasRefresh} accessToken={accessToken} />}></Route>
       </Route>
       {/* {(!hasRefresh || !accessToken) && !isLoading && (

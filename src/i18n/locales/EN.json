@@ -1,5 +1,8 @@
 {
-  "home": {
-    "title": "Home"
+  "home": "Home",
+  "header": {
+    "products": "Products",
+    "favorites": "Favorites",
+    "basket": "Basket"
   }
 }
