@@ -35,8 +35,8 @@ function Header() {
     },
     {
       id: 4,
-      title: t('header.basket'),
-      path: '/basket',
+      title: t('header.cart'),
+      path: '/cart',
     },
   ];
 

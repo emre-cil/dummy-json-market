@@ -3,6 +3,6 @@
   "header": {
     "products": "Ürünler",
     "favorites": "Favoriler",
-    "basket": "Sepet"
+    "cart": "Sepet"
   }
 }

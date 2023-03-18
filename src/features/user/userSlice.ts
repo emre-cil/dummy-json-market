@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
 
 type initialStateType = {
-  basket: any[];
+  cart: any[];
   mode: string;
 };
 
 const initialState = {
-  basket: [],
+  cart: [],
   mode: localStorage.getItem('mode')
     ? localStorage.getItem('mode')
     : window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -29,20 +29,20 @@ export const userSlice = createSlice({
       }
     },
 
-    addToBasket: (state, action) => {
-      state.basket = [...state.basket, action.payload];
+    addToCart: (state, action) => {
+      state.cart = [...state.cart, action.payload];
     },
 
-    removeFromBasket: (state, action) => {
-      const index = state.basket.findIndex((basketItem) => basketItem.id === action.payload.id);
+    removeFromCart: (state, action) => {
+      const index = state.cart.findIndex((item) => item.id === action.payload.id);
 
-      const newBasket = [...state.basket];
+      const newCart = [...state.cart];
 
       if (index >= 0) {
-        newBasket.splice(index, 1);
+        newCart.splice(index, 1);
       }
 
-      state.basket = newBasket;
+      state.cart = newCart;
     },
   },
 });
@@ -51,6 +51,6 @@ export const { changeMode } = userSlice.actions;
 
 export const selectMode = (state: RootState) => state.user.mode;
 
-export const selectBasket = (state: RootState) => state.user.basket;
+export const selectCart = (state: RootState) => state.user.cart;
 
 export default userSlice.reducer;

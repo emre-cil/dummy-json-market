@@ -3,6 +3,6 @@
   "header": {
     "products": "Products",
     "favorites": "Favorites",
-    "basket": "Basket"
+    "cart": "Cart"
   }
 }

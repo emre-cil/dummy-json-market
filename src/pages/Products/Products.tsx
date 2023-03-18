@@ -18,8 +18,7 @@ type ProductType = {
   images: string[];
 };
 function Products() {
-  const { data: item, isloading, error } = useGetProductsQuery({ limit: 100 });
-  console.log(item);
+  const { data: item, isloading, error } = useGetProductsQuery(undefined);
   return (
     <div className="container-lg">
       <div className="dynamic-row">

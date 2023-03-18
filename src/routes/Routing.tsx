@@ -5,7 +5,8 @@ import NotFound from '@/pages/NotFound/NotFound';
 import ContentWrapper from '@/components/ContentWrapper/ContentWrapper';
 import Products from '@/pages/Products/Products';
 import Favorites from '@/pages/Favorites/Favorites';
-import Basket from '@/pages/Basket/Basket';
+import Cart from '@/pages/Cart/Cart';
+import ProductDetail from '@/pages/ProductDetail/ProductDetail';
 
 const Routing = () => {
   return (
@@ -14,8 +15,9 @@ const Routing = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/basket" element={<Basket />} />
+        <Route path="/cart" element={<Cart />} />
       </Route>
     </Routes>
   );

@@ -13,7 +13,7 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <Link to="1" className={classes.product_wrapper}>
+    <Link to={product.id.toString()} className={classes.product_wrapper}>
       <img src={product.thumbnail} alt={product.title} />
       <div className={classes.product_info}>
         <div>
