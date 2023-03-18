@@ -19,11 +19,6 @@ function Header() {
 
   const links = [
     {
-      id: 1,
-      title: t('home'),
-      path: '/',
-    },
-    {
       id: 2,
       title: t('header.products'),
       path: '/products',

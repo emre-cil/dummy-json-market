@@ -25,6 +25,7 @@
   button {
     border: none;
     background-color: #f0c14b;
+    height: 3rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: 600;
@@ -37,5 +38,33 @@
     &:hover {
       background-color: #ddb347;
     }
+  }
+}
+
+.title_container {
+  position: relative;
+  padding-right: 2rem;
+}
+.favorite {
+  position: absolute;
+  font-size: 2rem;
+  top: 4px;
+  right: 4px;
+  color: #f0c14b;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #ddb347;
+  }
+}
+
+.stars {
+  display: inline-block;
+  font-size: 25px;
+  line-height: 1;
+  div {
+    letter-spacing: 2px;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 }

@@ -1,4 +1,5 @@
 .product_wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -10,7 +11,7 @@
   cursor: pointer;
   img {
     object-fit: cover;
-    height: 170px;
+    height: 175px;
     width: 100%;
   }
 
@@ -28,12 +29,11 @@
   }
 }
 .product_info {
-  height: 60px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   @media (max-width: 768px) {
-    height: 50px;
     font-size: 0.8rem;
   }
   padding: 5px 10px;
@@ -44,4 +44,35 @@
   h6 {
     line-height: 0.7rem;
   }
+}
+
+.price_section {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.favorite {
+  position: absolute;
+  font-size: 1.25rem;
+  top: 10px;
+  right: 10px;
+  color: #f0c14b;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #ddb347;
+  }
+}
+
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-weight: 600;
+  background-color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
