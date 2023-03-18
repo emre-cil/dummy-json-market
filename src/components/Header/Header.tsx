@@ -35,20 +35,22 @@ function Header() {
   ];
 
   return (
-    <div className={classes.container}>
-      <div className={classes.header_links}>
-        {links.map((link) => (
-          <Link key={link.id} to={link.path}>
-            {link.title}
-          </Link>
-        ))}
-      </div>
-      <div>
-        {languages.map((language) => (
-          <button key={language} onClick={() => changeLanguage(language)}>
-            {language}
-          </button>
-        ))}
+    <div className={classes.wrapper}>
+      <div className={`container-lg ${classes.container}`}>
+        <div className={classes.header_links}>
+          {links.map((link) => (
+            <Link key={link.id} to={link.path}>
+              {link.title}
+            </Link>
+          ))}
+        </div>
+        <div>
+          {languages.map((language) => (
+            <button key={language} onClick={() => changeLanguage(language)}>
+              {language}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

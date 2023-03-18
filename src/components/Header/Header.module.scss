@@ -1,11 +1,14 @@
-.container {
+.wrapper {
   height: 60px;
   width: 100%;
-  padding: 0 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.container {
+  height: 100%;
   display: flex;
   align-items: center;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .header_links {
@@ -14,7 +17,6 @@
   justify-content: space-between;
   gap: 20px;
   a {
-    font-size: 1.2rem;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
 
@@ -23,7 +25,7 @@
       display: block;
       width: 0;
       height: 2px;
-      margin-top: 4px;
+      margin-top: 3px;
       background: #c37b07;
       transition: all 0.3s ease-in-out;
     }

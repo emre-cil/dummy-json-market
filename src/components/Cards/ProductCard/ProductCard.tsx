@@ -7,6 +7,7 @@ type ProductCardProps = {
     title: string;
     price: number;
     thumbnail: string;
+    brand: string;
   };
 };
 
@@ -15,7 +16,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <Link to="1" className={classes.product_wrapper}>
       <img src={product.thumbnail} alt={product.title} />
       <div className={classes.product_info}>
-        <h5>{product.title}</h5>
+        <div>
+          <h6>{product.title}</h6>
+          <p>{product.brand}</p>
+        </div>
         <h6>${product.price}</h6>
       </div>
     </Link>

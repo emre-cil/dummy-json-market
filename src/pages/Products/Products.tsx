@@ -18,13 +18,11 @@ type ProductType = {
   images: string[];
 };
 function Products() {
-  const PRODUCT_LIMIT = 30;
-  const [page, setPage] = React.useState(1);
-  const { data: item, isloading, error } = useGetProductsQuery({ skip: (page - 1) * PRODUCT_LIMIT });
+  const { data: item, isloading, error } = useGetProductsQuery({ limit: 100 });
   console.log(item);
   return (
-    <div className="container-md">
-      <div className="row">
+    <div className="container-lg">
+      <div className="dynamic-row">
         <ProductsFilter />
         <div className={classes.products}>
           {item?.products?.map((product: ProductType) => (

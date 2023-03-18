@@ -1,10 +1,16 @@
 .wrapper {
   position: sticky;
   top: 1rem;
-  margin: 20px 10px;
-  width: 150px;
+  margin: 20px 0px;
+  width: 200px;
   height: 600px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   border-radius: 10px;
+  // when max 768px, the wrapper will be 100% width
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
 }

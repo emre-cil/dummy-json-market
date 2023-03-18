@@ -1,17 +1,14 @@
 @import './base/reset';
 
 .container-lg {
-  max-width: 1140px;
+  max-width: 1250px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
-.container-md {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.row {
+.dynamic-row {
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
