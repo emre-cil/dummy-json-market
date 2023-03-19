@@ -6,14 +6,14 @@ interface FavoritesHook {
 }
 
 export const useFavorite = (): FavoritesHook => {
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     setFavorites(storedFavorites);
   }, []);
 
-  const handleFavorite = (id: number) => {
+  const handleFavorite = (id: string) => {
     setFavorites((prevFavorites) => {
       const isFavorite = prevFavorites.includes(id);
 

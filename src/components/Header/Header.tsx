@@ -5,10 +5,12 @@ import classes from './Header.module.scss';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMode, changeMode } from '@/features/user/userSlice';
+import { selectCartCount } from '@/features/user/userSlice';
 
 function Header() {
   const dispatch = useDispatch();
   const mode = useSelector(selectMode);
+  const cartCount = useSelector(selectCartCount);
   const location = useLocation();
   const { i18n, t } = useTranslation();
 
@@ -32,16 +34,21 @@ function Header() {
       id: 4,
       title: t('header.cart'),
       path: '/cart',
+      badge: true,
     },
   ];
-
   return (
     <div className={classes.wrapper}>
       <div className={`container-lg ${classes.container}`}>
         <div className={classes.header_links}>
           {links.map((link) => (
-            <Link key={link.id} to={link.path} className={location.pathname === link.path ? classes.active : ''}>
+            <Link
+              key={link.id}
+              to={link.path}
+              className={`${classes.link} ${location.pathname === link.path ? classes.active : ''}`}
+            >
               {link.title}
+              {link.path === '/cart' && cartCount > 0 && <span>{cartCount}</span>}
             </Link>
           ))}
         </div>

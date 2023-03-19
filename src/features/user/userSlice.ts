@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
-
+import { toast } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 type initialStateType = {
   cart: any[];
   mode: string;
 };
 
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cart') || '[]'),
   mode: localStorage.getItem('mode')
     ? localStorage.getItem('mode')
     : window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -29,28 +30,58 @@ export const userSlice = createSlice({
       }
     },
 
-    addToCart: (state, action) => {
-      state.cart = [...state.cart, action.payload];
+    addCart: (state, action) => {
+      // check 0 stock
+      if (action.payload.stock === 0) {
+        toast.error(action.payload.t('product.out_of_stock'));
+        return;
+      }
+      // if there is already a product in the cart, add the quantity else add the product to the cart
+      const index = state.cart.findIndex((item) => item.id === action.payload.id);
+      if (index !== -1) {
+        if (state.cart[index].quantity === action.payload.stock) {
+          toast.error(action.payload.t('product.out_of_stock'));
+          return;
+        }
+        state.cart[index].quantity += 1;
+        // if there is a toast, show the toast
+        action.payload.toast && toast.success(`${action.payload.title} ${action.payload.t('product.added')}`);
+      } else {
+        state.cart.push({
+          id: action.payload.id,
+          quantity: 1,
+        });
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     },
 
-    removeFromCart: (state, action) => {
+    reduceCart: (state, action) => {
+      // if there is already a product in the cart, reduce the quantity
       const index = state.cart.findIndex((item) => item.id === action.payload.id);
-
-      const newCart = [...state.cart];
-
-      if (index >= 0) {
-        newCart.splice(index, 1);
+      if (index !== -1) {
+        // if the quantity is 1, remove the product from the cart else reduce the quantity by 1
+        if (state.cart[index].quantity > 1) {
+          state.cart[index].quantity -= 1;
+        }
       }
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
 
-      state.cart = newCart;
+    removeCart: (state, action) => {
+      // remove the product from the cart
+      const index = state.cart.findIndex((item) => item.id === action.payload);
+      state.cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     },
   },
 });
 
-export const { changeMode } = userSlice.actions;
+export const { changeMode, addCart, reduceCart, removeCart } = userSlice.actions;
 
 export const selectMode = (state: RootState) => state.user.mode;
 
 export const selectCart = (state: RootState) => state.user.cart;
+
+export const selectCartCount = (state: RootState) => state.user.cart.length;
 
 export default userSlice.reducer;

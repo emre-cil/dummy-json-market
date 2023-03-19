@@ -1,8 +1,33 @@
 {
-  "home": "Home",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
   "header": {
     "products": "Products",
     "favorites": "Favorites",
     "cart": "Cart"
+  },
+  "product": {
+    "removed": "removed from cart",
+    "added": "added to cart",
+    "out_of_stock": "Out of stock"
+  },
+  "cart": {
+    "remove": "Are you sure you want to remove",
+    "fromCart": "from cart",
+    "total": "Total",
+    "checkout": "Checkout"
+  },
+  "products": {
+    "search": "Search",
+    "filter": "Filter",
+    "default": "Default",
+    "price-desc": "Price: High to Low",
+    "price-asc": "Price: Low to High",
+    "rating-desc": "Rating: High to Low",
+    "rating-asc": "Rating: Low to High",
+    "stock-desc": "Stock: High to Low",
+    "stock-asc": "Stock: Low to High",
+    "discount-desc": "Discount: High to Low",
+    "discount-asc": "Discount: Low to High"
   }
 }

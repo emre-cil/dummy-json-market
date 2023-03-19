@@ -1,0 +1,31 @@
+.container {
+  flex: 1;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  border-radius: 10px;
+  margin-left: 1rem;
+  padding: 1rem;
+  max-height: 300px;
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  button {
+    border: none;
+    background-color: #f0c14b;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

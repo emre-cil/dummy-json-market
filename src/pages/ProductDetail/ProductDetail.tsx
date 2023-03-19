@@ -6,12 +6,20 @@ import classes from './ProductDetail.module.scss';
 import { BsFillBasketFill } from 'react-icons/bs';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { useFavorite } from '@/hooks/useFavorite';
+import { selectCart, addCart } from '@/features/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ProductDetail = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const { id } = useParams();
-  const { data: item, isloading, error } = useGetProductWithIdQuery(id);
+  const dispatch = useDispatch();
+  const carts = useSelector(selectCart);
+  const { data: item } = useGetProductWithIdQuery(id);
   const { favorites, handleFavorite } = useFavorite();
-  console.log(item);
+
   return (
     <div className="container-lg">
       <div className="dynamic-row" style={{ marginTop: '20px' }}>
@@ -26,7 +34,7 @@ const ProductDetail = () => {
                   className={classes.favorite}
                   onClick={(e) => {
                     e.preventDefault();
-                    id && handleFavorite(id);
+                    id && handleFavorite(id.toString());
                   }}
                 >
                   {id && favorites.includes(id) ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
@@ -45,6 +53,7 @@ const ProductDetail = () => {
                   </div>
                 </div>
               </div>
+              <div className={classes.description_container}>{item?.description}</div>
               <div className={classes.price_container}>
                 <div>
                   <h4
@@ -53,11 +62,21 @@ const ProductDetail = () => {
                       color: 'gray',
                     }}
                   >
-                    ${item?.price}
+                    ${Math.round(item?.price / (1 - item?.discountPercentage / 100))}
                   </h4>
-                  <h2>${Math.round((item?.price * (100 - item?.discountPercentage)) / 100)}</h2>
+                  <h2>${item?.price}</h2>
                 </div>
-                <button>
+                <button
+                  onClick={() => {
+                    dispatch(
+                      addCart({
+                        ...item,
+                        t: t,
+                      }),
+                    );
+                    navigate('/cart');
+                  }}
+                >
                   <BsFillBasketFill />
                   Add to cart
                 </button>

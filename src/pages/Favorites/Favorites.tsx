@@ -5,7 +5,7 @@ import { useGetProductsQuery } from '@/features/products/productsApiSlice';
 import ProductCard from '@/components/Cards/ProductCard/ProductCard';
 import type { ProductType } from '@/pages/Products/Products';
 function Favorites() {
-  const { data: item, isloading, error } = useGetProductsQuery(undefined);
+  const { data: item } = useGetProductsQuery(undefined);
   const { favorites, handleFavorite } = useFavorite();
   const favoriteProducts = useMemo(() => {
     return item?.products?.filter((product: ProductType) => favorites.includes(product?.id.toString()));
