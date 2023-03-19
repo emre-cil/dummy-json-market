@@ -131,7 +131,7 @@ const Address = () => {
               ))}
 
               <button type="submit" disabled={isSubmitting}>
-                {t('submit')}
+                {t('add')}
               </button>
             </Form>
           )}

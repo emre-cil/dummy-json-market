@@ -18,6 +18,10 @@
     select {
       color: a.$background;
     }
+    option {
+      color: a.$background;
+      background-color: a.$background-dark;
+    }
   }
   padding: 20px 15px;
   border-radius: 10px;
