@@ -30,7 +30,7 @@ export const userSlice = createSlice({
 
     addCart: (state, action) => {
       // if there is already a product in the cart, increase the quantity
-      const index = state.cart.findIndex((item) => item.id === action.payload.id);
+      const index = state.cart.findIndex((item: any) => item.id === action.payload.id);
       if (index !== -1) {
         // if the quantity is less than the stock, increase the quantity by 1
         if (state.cart[index].quantity < action.payload.stock) {
@@ -49,7 +49,7 @@ export const userSlice = createSlice({
 
     reduceCart: (state, action) => {
       // if there is already a product in the cart, reduce the quantity
-      const index = state.cart.findIndex((item) => item.id === action.payload.id);
+      const index = state.cart.findIndex((item: any) => item.id === action.payload.id);
       if (index !== -1) {
         // if the quantity is 1, remove the product from the cart else reduce the quantity by 1
         if (state.cart[index].quantity > 1) {
@@ -61,7 +61,7 @@ export const userSlice = createSlice({
 
     removeCart: (state, action) => {
       // remove the product from the cart
-      const index = state.cart.findIndex((item) => item.id === action.payload);
+      const index = state.cart.findIndex((item: any) => item.id === action.payload);
       state.cart.splice(index, 1);
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },

@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Modal.module.scss';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectMode } from '@/features/user/userSlice';
 type ModalProps = {
   setIsOpen: (isOpen: boolean) => void;
   title: string;
@@ -8,10 +10,13 @@ type ModalProps = {
 };
 const Modal: React.FC<ModalProps> = ({ setIsOpen, title, handleOperation }) => {
   const { t } = useTranslation();
+  const mode = useSelector(selectMode);
   return (
     <div className={classes.container} onClick={() => setIsOpen(false)}>
       <div
-        className={classes.modal}
+        className={`${classes.modal} 
+    ${mode === 'dark' ? classes.dark : ''}
+        `}
         onClick={(e) => {
           e.stopPropagation();
         }}

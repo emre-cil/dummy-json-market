@@ -1,0 +1,43 @@
+@use './base/reset';
+@use './abstracts' as a;
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-y: overlay;
+  // if has .dark class, set html background-color to black
+  &:has(.dark) {
+    background-color: a.$background-dark;
+    color: #fff;
+  }
+
+  // if has .light class, set html background-color to white
+  &:has(.light) {
+    background-color: a.$background;
+    color: #000;
+  }
+}
+
+.container-lg {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dynamic-row {
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px);
+  flex: 1;
+}

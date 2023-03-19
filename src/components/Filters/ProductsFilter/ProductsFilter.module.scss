@@ -1,3 +1,5 @@
+@use '../../../styles/abstracts' as a;
+
 .wrapper {
   position: sticky;
   display: flex;
@@ -8,6 +10,15 @@
   width: 200px;
   max-height: 142px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  &.dark {
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.2);
+    input {
+      color: a.$background;
+    }
+    select {
+      color: a.$background;
+    }
+  }
   padding: 20px 15px;
   border-radius: 10px;
   // when max 768px, the wrapper will be 100% width
@@ -28,6 +39,7 @@
     padding: 0 10px;
     font-size: 0.8rem;
     outline: none;
+    background-color: transparent;
   }
   select {
     width: 100%;
@@ -36,6 +48,7 @@
     border-radius: 5px;
     padding: 0 10px;
     font-size: 0.8rem;
+    background-color: transparent;
     outline: none;
   }
 }

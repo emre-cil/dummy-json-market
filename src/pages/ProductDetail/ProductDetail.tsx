@@ -39,7 +39,7 @@ const ProductDetail = () => {
                 <div className={classes.stars}>
                   <div
                     style={{
-                      background: `linear-gradient(90deg, #f0c14b ${(item?.rating / 5) * 100}%, #9c9c9c ${
+                      background: `linear-gradient(90deg, $primary ${(item?.rating / 5) * 100}%, #9c9c9c ${
                         (item?.rating / 5) * 100
                       }%)`,
                       backgroundClip: 'text',

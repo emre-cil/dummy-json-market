@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { reduceCart, removeCart, addCart } from '@/features/user/userSlice';
-import { useDispatch } from 'react-redux';
+import { reduceCart, removeCart, addCart, selectMode } from '@/features/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import classes from './CartCard.module.scss';
 import { IoAdd, IoRemove } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
@@ -20,12 +20,17 @@ type CartCardProps = {
   };
 };
 const CartCard: React.FC<CartCardProps> = ({ cart }) => {
+  const mode = useSelector(selectMode);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={classes.wrapper}>
+    <div
+      className={`${classes.wrapper} 
+    ${mode === 'dark' ? classes.dark : ''}
+    `}
+    >
       <img src={cart.thumbnail} alt={cart.title} />
       <div className={classes.info}>
         <h4>{cart.title}</h4>

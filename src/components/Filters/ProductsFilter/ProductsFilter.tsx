@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './ProductsFilter.module.scss';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectMode } from '@/features/user/userSlice';
 type Props = {
   search: string;
   setSearch: (search: string) => void;
@@ -11,8 +13,13 @@ type Props = {
 
 const ProductsFilter: React.FC<Props> = ({ search, setSearch, selectedOption, setSelectedOption, options }) => {
   const { t } = useTranslation();
+  const mode = useSelector(selectMode);
   return (
-    <div className={classes.wrapper}>
+    <div
+      className={`${classes.wrapper} 
+    ${mode === 'dark' ? classes.dark : ''}
+    `}
+    >
       <div className={classes.search}>
         <p>{t('products.search')}</p>
         <input

@@ -4,7 +4,7 @@ import { store } from './app/store';
 import React from 'react';
 import App from './App';
 import './i18n/config';
-import './styles/main.scss';
+import './styles/_main.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

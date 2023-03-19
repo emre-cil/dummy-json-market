@@ -6,6 +6,7 @@ import { useGetProductsQuery } from '@/features/products/productsApiSlice';
 import CartCard from '@/components/Cards/CartCard/CartCard';
 import CartOperation from '@/components/CartOperation/CartOperation';
 import { useTranslation } from 'react-i18next';
+
 function Cart() {
   const { t } = useTranslation();
   const { data: item } = useGetProductsQuery(undefined);

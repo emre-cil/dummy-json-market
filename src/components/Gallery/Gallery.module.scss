@@ -1,19 +1,4 @@
-// <div className={classes.gallery}>
-// <div className={classes.gallery_main}>
-//   <img src={images[activeImageIndex]} alt="product" />
-// </div>
-// <div className={classes.gallery_thumbnails}>
-//   {images.map((image, index) => (
-//     <img
-//       key={index}
-//       src={image}
-//       alt="product"
-//       onClick={() => setActiveImageIndex(index)}
-//       className={activeImageIndex === index ? classes.active : ''}
-//     />
-//   ))}
-// </div>
-// </div>
+@use '../../styles/abstracts' as a;
 
 .gallery_main {
   overflow: hidden;
@@ -49,11 +34,11 @@
     border: 1px solid transparent;
     transition: all 0.3s ease-in-out;
     &:hover {
-      border: 1px solid #c37b07;
+      border: 1px solid a.$primary-color;
     }
   }
 }
 
 .active {
-  border: 1px solid #c37b07;
+  border: 1px solid a.$primary-color;
 }

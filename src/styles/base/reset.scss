@@ -1,13 +1,3 @@
-@use '../abstracts/colors';
-
-html {
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-  overflow-y: overlay;
-}
 *,
 *::before,
 *::after {
@@ -19,8 +9,6 @@ html {
 }
 body {
   width: 100%;
-  // color: colors.$black;
-  // background-color: colors.$white;
   font-family: 'Exo 2', sans-serif;
 }
 ul {
@@ -29,14 +17,4 @@ ul {
 a {
   text-decoration: none;
   color: unset;
-}
-
-.light {
-  // color: colors.$black;
-  // background-color: colors.$white;
-}
-
-.dark {
-  // color: colors.$white;
-  // background-color: colors.$black;
 }

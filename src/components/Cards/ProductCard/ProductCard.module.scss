@@ -1,8 +1,14 @@
+@use '../../../styles/abstracts' as a;
+
 .product_wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  &.dark {
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.2);
+  }
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
@@ -75,11 +81,11 @@
   font-size: 1.25rem;
   top: 10px;
   right: 10px;
-  color: #f0c14b;
+  color: a.$primary-color;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   &:hover {
-    color: #ddb347;
+    color: a.$primary-hover-color;
   }
 }
 
@@ -88,7 +94,7 @@
   top: 10px;
   left: 10px;
   font-weight: 600;
-  background-color: #fff;
+  background-color: a.$primary-color;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;

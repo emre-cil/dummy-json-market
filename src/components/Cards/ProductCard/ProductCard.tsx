@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCart } from '@/features/user/userSlice';
+import { addCart, selectMode } from '@/features/user/userSlice';
 
 type ProductCardProps = {
   product: {
@@ -22,9 +22,12 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, favoriteHandler }) => {
   const dispatch = useDispatch();
-
+  const mode = useSelector(selectMode);
   return (
-    <Link to={`/products/${product.id.toString()}`} className={classes.product_wrapper}>
+    <Link
+      to={`/products/${product.id.toString()}`}
+      className={`${classes.product_wrapper} ${mode === 'dark' ? classes.dark : ''}`}
+    >
       <div className={classes.discount}>{Math.round(product.discountPercentage)}%</div>
       <div
         className={classes.favorite}

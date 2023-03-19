@@ -38,7 +38,11 @@ function Header() {
     },
   ];
   return (
-    <div className={classes.wrapper}>
+    <div
+      className={`${classes.wrapper}
+    ${mode === 'dark' ? classes.dark : ''}
+    `}
+    >
       <div className={`container-lg ${classes.container}`}>
         <div className={classes.header_links}>
           {links.map((link) => (
@@ -48,13 +52,25 @@ function Header() {
               className={`${classes.link} ${location.pathname === link.path ? classes.active : ''}`}
             >
               {link.title}
-              {link.path === '/cart' && cartCount > 0 && <span>{cartCount}</span>}
+              {link.path === '/cart' && cartCount > 0 && (
+                <span
+                  style={{
+                    color: 'white',
+                  }}
+                >
+                  {cartCount}
+                </span>
+              )}
             </Link>
           ))}
         </div>
         <div className={classes.buttons}>
           <button onClick={() => dispatch(changeMode())}>
-            {mode === 'light' ? <MdLightMode className={classes.light} /> : <MdDarkMode className={classes.dark} />}
+            {mode === 'light' ? (
+              <MdLightMode className={classes.btn_light} />
+            ) : (
+              <MdDarkMode className={classes.btn_dark} />
+            )}
           </button>
           <button onClick={() => changeLanguage(i18n.language === 'TR' ? 'EN' : 'TR')}>
             {i18n.language === 'TR' ? 'EN' : 'TR'}
