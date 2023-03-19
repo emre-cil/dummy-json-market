@@ -15,7 +15,8 @@
     "remove": "Are you sure you want to remove",
     "fromCart": "from cart",
     "total": "Total",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "empty": "Your cart is empty"
   },
   "products": {
     "search": "Search",
@@ -29,5 +30,8 @@
     "stock-asc": "Stock: Low to High",
     "discount-desc": "Discount: High to Low",
     "discount-asc": "Discount: Low to High"
+  },
+  "favorites": {
+    "empty": "You have no favorites yet"
   }
 }

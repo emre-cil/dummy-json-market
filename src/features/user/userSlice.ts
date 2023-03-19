@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
-import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
 type initialStateType = {
-  cart: any[];
+  cart: any;
   mode: string;
 };
 
@@ -31,18 +29,21 @@ export const userSlice = createSlice({
     },
 
     addCart: (state, action) => {
+      // if there is already a product in the cart, increase the quantity
       const index = state.cart.findIndex((item) => item.id === action.payload.id);
       if (index !== -1) {
-        console.log(state.cart[index].quantity, action.payload.stock);
+        // if the quantity is less than the stock, increase the quantity by 1
         if (state.cart[index].quantity < action.payload.stock) {
           state.cart[index].quantity += 1;
         }
       } else {
+        // if there is no product in the cart, add the product to the cart
         state.cart.push({
           id: action.payload.id,
           quantity: 1,
         });
       }
+      // save the cart to the local storage
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },
 
