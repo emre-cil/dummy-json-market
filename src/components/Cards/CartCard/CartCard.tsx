@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { reduceCart, removeCart, addCart, selectMode } from '@/features/user/userSlice';
+import {
+  reduceCart,
+  removeCart,
+  addCart,
+  selectMode,
+  selectFavorites,
+  handleFavorite,
+} from '@/features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './CartCard.module.scss';
 import { IoAdd, IoRemove } from 'react-icons/io5';
@@ -21,6 +28,7 @@ type CartCardProps = {
 };
 const CartCard: React.FC<CartCardProps> = ({ cart }) => {
   const mode = useSelector(selectMode);
+  const favorites = useSelector(selectFavorites);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -71,10 +79,18 @@ const CartCard: React.FC<CartCardProps> = ({ cart }) => {
         <Modal
           setIsOpen={setIsOpen}
           title={t('cart.remove') + ' ' + cart.title + ' ' + t('cart.fromCart') + '?'}
-          handleOperation={() => {
+          btn_opt1={() => {
             dispatch(removeCart(cart.id));
             toast.success(cart.title + ' ' + t('product.removed'));
           }}
+          btn_opt2={() => {
+            const id = cart.id;
+            dispatch(handleFavorite(id.toString()));
+            dispatch(removeCart(cart.id));
+            toast.success(cart.title + ' ' + t('product.removed'));
+          }}
+          btn_title_1={t('cart.removeBtn')}
+          btn_title_2={!favorites?.includes(cart?.id.toString()) && t('cart.removeAndFavBtn')}
         />
       )}
     </div>

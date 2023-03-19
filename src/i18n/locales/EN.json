@@ -1,6 +1,4 @@
 {
-  "cancel": "Cancel",
-  "confirm": "Confirm",
   "header": {
     "products": "Products",
     "favorites": "Favorites",
@@ -8,15 +6,17 @@
   },
   "product": {
     "removed": "removed from cart",
-    "added": "added to cart",
-    "out_of_stock": "Out of stock"
+    "added": "added to cart"
   },
   "cart": {
     "remove": "Are you sure you want to remove",
     "fromCart": "from cart",
     "total": "Total",
     "checkout": "Checkout",
-    "empty": "Your cart is empty"
+    "empty": "Your cart is empty",
+    "addToCart": "Add to cart",
+    "removeBtn": "Remove from cart",
+    "removeAndFavBtn": "Return to cart and add to favorites"
   },
   "products": {
     "search": "Search",

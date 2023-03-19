@@ -3,9 +3,10 @@ import { useGetProductsQuery } from '@/features/products/productsApiSlice';
 import classes from './Products.module.scss';
 import ProductCard from '@/components/Cards/ProductCard/ProductCard';
 import ProductsFilter from '@/components/Filters/ProductsFilter/ProductsFilter';
-import { useFavorite } from '@/hooks/useFavorite';
 import useDebounce from '@/hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectFavorites } from '@/features/user/userSlice';
 export type ProductType = {
   id: number;
   title: string;
@@ -23,7 +24,7 @@ export type ProductType = {
 function Products() {
   const { t } = useTranslation();
   const { data: item } = useGetProductsQuery(undefined);
-  const { favorites, handleFavorite } = useFavorite();
+  const favorites = useSelector(selectFavorites);
   const options = [
     { value: 'default', label: t('products.default') },
     { value: 'price-desc', label: t('products.price-desc') },
@@ -52,7 +53,9 @@ function Products() {
           product.brand.toLowerCase().includes(debouncedSearch.toLowerCase())
         );
       });
-    } else if (selectedOption !== 'default') {
+    }
+
+    if (selectedOption !== 'default') {
       // sort by type
       switch (selectedOption) {
         case 'price-desc':
@@ -103,12 +106,7 @@ function Products() {
         />
         <div className={classes.products}>
           {filteredProducts?.map((product: ProductType) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              favoriteHandler={handleFavorite}
-              isFavorite={favorites.includes(product?.id.toString())}
-            />
+            <ProductCard key={product.id} product={product} isFavorite={favorites.includes(product?.id.toString())} />
           ))}
         </div>
       </div>

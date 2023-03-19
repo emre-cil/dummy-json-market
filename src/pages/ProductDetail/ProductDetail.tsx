@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetProductWithIdQuery } from '@/features/products/productsApiSlice';
 import Gallery from '@/components/Gallery/Gallery';
 import classes from './ProductDetail.module.scss';
 import { BsFillBasketFill } from 'react-icons/bs';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
-import { useFavorite } from '@/hooks/useFavorite';
 import { addCart } from '@/features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { handleFavorite, selectFavorites } from '@/features/user/userSlice';
 
 const ProductDetail = () => {
+  const favorites = useSelector(selectFavorites);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
   const { data: item } = useGetProductWithIdQuery(id);
-  const { favorites, handleFavorite } = useFavorite();
-
+  const [quantity, setQuantity] = useState(1);
   return (
     <div className="container-lg">
       <div className="dynamic-row" style={{ marginTop: '20px' }}>
@@ -31,7 +33,7 @@ const ProductDetail = () => {
                   className={classes.favorite}
                   onClick={(e) => {
                     e.preventDefault();
-                    id && handleFavorite(id.toString());
+                    id && dispatch(handleFavorite(id.toString()));
                   }}
                 >
                   {id && favorites.includes(id) ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
@@ -39,9 +41,8 @@ const ProductDetail = () => {
                 <div className={classes.stars}>
                   <div
                     style={{
-                      background: `linear-gradient(90deg, $primary ${(item?.rating / 5) * 100}%, #9c9c9c ${
-                        (item?.rating / 5) * 100
-                      }%)`,
+                      background: `linear-gradient(90deg, #f8e825
+                         ${(item?.rating / 5) * 100}%, #9c9c9c ${(item?.rating / 5) * 100}%)`,
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                     }}
@@ -63,20 +64,35 @@ const ProductDetail = () => {
                   </h4>
                   <h2>${item?.price}</h2>
                 </div>
-                <button
-                  onClick={() => {
-                    dispatch(
-                      addCart({
-                        ...item,
-                        quantity: 1,
-                      }),
-                    );
-                    navigate('/cart');
-                  }}
-                >
-                  <BsFillBasketFill />
-                  Add to cart
-                </button>
+                <div className={classes.quantity}>
+                  <input
+                    type="number"
+                    min="1"
+                    max={item?.stock}
+                    value={quantity}
+                    onChange={(e) => {
+                      if (e.target.valueAsNumber > item?.stock) {
+                        setQuantity(item?.stock);
+                      } else {
+                        setQuantity(e.target.valueAsNumber);
+                      }
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      dispatch(
+                        addCart({
+                          ...item,
+                          quantity: quantity,
+                        }),
+                      );
+                      navigate('/cart');
+                    }}
+                  >
+                    <BsFillBasketFill />
+                    {t('cart.addToCart')}
+                  </button>
+                </div>
               </div>
             </>
           )}

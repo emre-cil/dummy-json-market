@@ -24,21 +24,42 @@
   align-items: center;
   justify-content: space-between;
 
-  button {
-    border: none;
-    background-color: a.$primary-color;
-    height: 3rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-size: 1rem;
-    svg {
-      margin-right: 0.5rem;
+  .quantity {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    gap: 0.2rem;
+    input {
+      height: 3rem;
+      background-color: a.$primary-color;
+      border: 1px solid white;
+      box-shadow: 0 0 0 1px black;
+      color: white;
+      text-align: center;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      &:focus {
+        outline: none;
+      }
     }
-    &:hover {
-      background-color: a.$primary-hover-color;
+    button {
+      border: none;
+      background-color: a.$primary-color;
+      height: 3rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      font-size: 1rem;
+      svg {
+        margin-right: 0.5rem;
+      }
+      &:hover {
+        background-color: a.$primary-hover-color;
+      }
     }
   }
 }

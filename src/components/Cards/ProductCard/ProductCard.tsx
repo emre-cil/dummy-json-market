@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCart, selectMode } from '@/features/user/userSlice';
+import { addCart, selectMode, handleFavorite } from '@/features/user/userSlice';
 
 type ProductCardProps = {
   product: {
@@ -17,10 +17,9 @@ type ProductCardProps = {
     discountPercentage: number;
   };
   isFavorite?: boolean;
-  favoriteHandler: (id: string) => void;
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, favoriteHandler }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite }) => {
   const dispatch = useDispatch();
   const mode = useSelector(selectMode);
   return (
@@ -33,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, favorite
         className={classes.favorite}
         onClick={(e) => {
           e.preventDefault();
-          favoriteHandler(product.id.toString());
+          dispatch(handleFavorite(product.id.toString()));
         }}
       >
         {isFavorite ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
