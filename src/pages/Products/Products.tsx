@@ -4,7 +4,7 @@ import classes from './Products.module.scss';
 import ProductCard from '@/components/Cards/ProductCard/ProductCard';
 import ProductsFilter from '@/components/Filters/ProductsFilter/ProductsFilter';
 import { useFavorite } from '@/hooks/useFavorite';
-type ProductType = {
+export type ProductType = {
   id: number;
   title: string;
   description: string;
