@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addCart, reduceCart, removeCart } from '@/features/user/userSlice';
+import { reduceCart, removeCart, addCart } from '@/features/user/userSlice';
 import { useDispatch } from 'react-redux';
 import classes from './CartCard.module.scss';
 import { IoAdd, IoRemove } from 'react-icons/io5';
@@ -45,11 +45,12 @@ const CartCard: React.FC<CartCardProps> = ({ cart }) => {
           <p>{cart.quantity}</p>
 
           <IoAdd
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               dispatch(
                 addCart({
                   ...cart,
-                  t: t,
+                  quantity: 1,
                 }),
               );
             }}

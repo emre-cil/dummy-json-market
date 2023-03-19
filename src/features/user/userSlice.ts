@@ -31,21 +31,12 @@ export const userSlice = createSlice({
     },
 
     addCart: (state, action) => {
-      // check 0 stock
-      if (action.payload.stock === 0) {
-        toast.error(action.payload.t('product.out_of_stock'));
-        return;
-      }
-      // if there is already a product in the cart, add the quantity else add the product to the cart
       const index = state.cart.findIndex((item) => item.id === action.payload.id);
       if (index !== -1) {
-        if (state.cart[index].quantity === action.payload.stock) {
-          toast.error(action.payload.t('product.out_of_stock'));
-          return;
+        console.log(state.cart[index].quantity, action.payload.stock);
+        if (state.cart[index].quantity < action.payload.stock) {
+          state.cart[index].quantity += 1;
         }
-        state.cart[index].quantity += 1;
-        // if there is a toast, show the toast
-        action.payload.toast && toast.success(`${action.payload.title} ${action.payload.t('product.added')}`);
       } else {
         state.cart.push({
           id: action.payload.id,

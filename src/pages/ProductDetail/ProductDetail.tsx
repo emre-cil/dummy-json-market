@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetProductWithIdQuery } from '@/features/products/productsApiSlice';
 import Gallery from '@/components/Gallery/Gallery';
@@ -6,17 +6,14 @@ import classes from './ProductDetail.module.scss';
 import { BsFillBasketFill } from 'react-icons/bs';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { useFavorite } from '@/hooks/useFavorite';
-import { selectCart, addCart } from '@/features/user/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { addCart } from '@/features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
 const ProductDetail = () => {
-  const { t } = useTranslation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const carts = useSelector(selectCart);
   const { data: item } = useGetProductWithIdQuery(id);
   const { favorites, handleFavorite } = useFavorite();
 
@@ -71,7 +68,7 @@ const ProductDetail = () => {
                     dispatch(
                       addCart({
                         ...item,
-                        t: t,
+                        quantity: 1,
                       }),
                     );
                     navigate('/cart');

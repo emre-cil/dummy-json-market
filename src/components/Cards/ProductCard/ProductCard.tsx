@@ -3,10 +3,9 @@ import classes from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
 import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '@/features/user/userSlice';
-import { useTranslation } from 'react-i18next';
+
 type ProductCardProps = {
   product: {
     id: number;
@@ -22,9 +21,8 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, favoriteHandler }) => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   return (
     <Link to={`/products/${product.id.toString()}`} className={classes.product_wrapper}>
       <div className={classes.discount}>{Math.round(product.discountPercentage)}%</div>
@@ -60,11 +58,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isFavorite, favorite
         <AiOutlineShoppingCart
           onClick={(e) => {
             e.preventDefault();
-            const test = dispatch(
+            dispatch(
               addCart({
                 ...product,
-                toast: true,
-                t: t,
+                quantity: 1,
               }),
             );
           }}
