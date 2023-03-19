@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/store';
+import type { AddressType } from '@/pages/Address/Address';
+
 type initialStateType = {
   cart: any;
   favorites: string[];
+  addressList: AddressType[];
   mode: string;
 };
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem('cart') || '[]'),
   favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
+  addressList: JSON.parse(localStorage.getItem('addressList') || '[]'),
   mode: localStorage.getItem('mode')
     ? localStorage.getItem('mode')
     : window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -68,6 +72,12 @@ export const userSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },
 
+    emptyCart: (state) => {
+      // remove all products from the cart
+      state.cart = [];
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
+
     handleFavorite: (state, action) => {
       // if the product is already in the favorites, remove it from the favorites
       // else add it to the favorites
@@ -81,10 +91,22 @@ export const userSlice = createSlice({
 
       localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
+
+    addAddress: (state, action) => {
+      state.addressList.push(action.payload);
+      localStorage.setItem('addressList', JSON.stringify(state.addressList));
+    },
+
+    removeAddress: (state, action) => {
+      const index = state.addressList.findIndex((item: AddressType) => item.id === action.payload);
+      state.addressList.splice(index, 1);
+      localStorage.setItem('addressList', JSON.stringify(state.addressList));
+    },
   },
 });
 
-export const { changeMode, addCart, reduceCart, removeCart, handleFavorite } = userSlice.actions;
+export const { changeMode, addCart, reduceCart, removeCart, handleFavorite, addAddress, removeAddress, emptyCart } =
+  userSlice.actions;
 
 export const selectMode = (state: RootState) => state.user.mode;
 
@@ -93,5 +115,7 @@ export const selectCart = (state: RootState) => state.user.cart;
 export const selectCartCount = (state: RootState) => state.user.cart.length;
 
 export const selectFavorites = (state: RootState) => state.user.favorites;
+
+export const selectAddressList = (state: RootState) => state.user.addressList;
 
 export default userSlice.reducer;

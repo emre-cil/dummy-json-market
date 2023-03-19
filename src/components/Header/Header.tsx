@@ -21,14 +21,19 @@ function Header() {
 
   const links = [
     {
-      id: 2,
+      id: 1,
       title: t('header.products'),
       path: '/products',
     },
     {
-      id: 3,
+      id: 2,
       title: t('header.favorites'),
       path: '/favorites',
+    },
+    {
+      id: 3,
+      title: t('header.address'),
+      path: '/address',
     },
     {
       id: 4,

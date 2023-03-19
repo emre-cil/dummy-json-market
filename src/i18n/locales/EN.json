@@ -1,14 +1,19 @@
 {
+  "submit": "Submit",
   "header": {
     "products": "Products",
     "favorites": "Favorites",
-    "cart": "Cart"
+    "cart": "Cart",
+    "address": "Address"
   },
   "product": {
     "removed": "removed from cart",
     "added": "added to cart"
   },
   "cart": {
+    "checkoutSuccess": "Your order has been successfully placed. Thank you for shopping with us!",
+    "noAddress": "Please add an address to continue",
+    "selectAddress": "Select Address",
     "remove": "Are you sure you want to remove",
     "fromCart": "from cart",
     "total": "Total",
@@ -33,5 +38,28 @@
   },
   "favorites": {
     "empty": "You have no favorites yet"
+  },
+  "address": {
+    "added": "Address added",
+    "removed": "Address removed",
+    "name": "Name",
+    "surname": "Surname",
+    "address": "Address",
+    "phone": "Phone",
+    "city": "City",
+    "town": "Town",
+    "doorNo": "Door No",
+    "nameMin": "Name must be at least 2 characters",
+    "surnameMin": "Surname must be at least 2 characters",
+    "phoneFormat": "Phone number is not valid",
+    "addressMin": "Address must be at least 5 characters",
+    "cityMin": "City must be at least 2 characters",
+    "townMin": "Town must be at least 2 characters",
+    "phoneRequired": "Phone number is required",
+    "nameRequired": "Name is required",
+    "surnameRequired": "Surname is required",
+    "addressRequired": "Address is required",
+    "cityRequired": "City is required",
+    "townRequired": "Town is required"
   }
 }

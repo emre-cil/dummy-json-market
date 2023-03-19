@@ -1,0 +1,22 @@
+.container {
+  height: 100px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 8px;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+}
+
+.address {
+  div {
+    display: flex;
+    gap: 0.2rem;
+  }
+}

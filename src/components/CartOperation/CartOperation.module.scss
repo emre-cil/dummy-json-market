@@ -10,7 +10,7 @@
   border-radius: 10px;
   margin-left: 1rem;
   padding: 1rem;
-  max-height: 300px;
+  height: 100%;
   position: sticky;
   top: 1rem;
   display: flex;
@@ -27,6 +27,12 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
   }
+}
+
+.addressList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .total {

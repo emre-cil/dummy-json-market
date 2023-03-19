@@ -1,8 +1,65 @@
 {
-  "home": "Ana Sayfa",
+  "submit": "Gönder",
   "header": {
     "products": "Ürünler",
     "favorites": "Favoriler",
-    "cart": "Sepet"
+    "cart": "Sepet",
+    "address": "Adres"
+  },
+  "product": {
+    "removed": "sepetten çıkarıldı",
+    "added": "sepete eklendi"
+  },
+  "cart": {
+    "checkoutSuccess": "Siparişiniz başarıyla alındı. Bizimle alışveriş yaptığınız için teşekkürler!",
+    "noAddress": "Devam etmek için lütfen bir adres ekleyin",
+    "selectAddress": "Lütfen bir adres seçin",
+    "remove": "Emin misiniz?",
+    "fromCart": "ürünü sepetinizden çıkarmak istediğinizden",
+    "total": "Toplam",
+    "checkout": "Ödeme",
+    "empty": "Sepetiniz boş",
+    "addToCart": "Sepete ekle",
+    "removeBtn": "Sepetten çıkar",
+    "removeAndFavBtn": "Favorilere ekle ve sepete dön"
+  },
+  "products": {
+    "search": "Ara",
+    "filter": "Filtrele",
+    "default": "Varsayılan",
+    "price-desc": "Fiyat: Yüksekten Düşüğe",
+    "price-asc": "Fiyat: Düşükten Yükseğe",
+    "rating-desc": "Değerlendirme: Yüksekten Düşüğe",
+    "rating-asc": "Değerlendirme: Düşükten Yükseğe",
+    "stock-desc": "Stok: Yüksekten Düşüğe",
+    "stock-asc": "Stok: Düşükten Yükseğe",
+    "discount-desc": "İndirim: Yüksekten Düşüğe",
+    "discount-asc": "İndirim: Düşükten Yükseğe"
+  },
+  "favorites": {
+    "empty": "Henüz favorileriniz yok"
+  },
+  "address": {
+    "added": "Adres eklendi",
+    "removed": "Adres kaldırıldı",
+    "name": "İsim",
+    "surname": "Soyisim",
+    "address": "Adres",
+    "phone": "Telefon",
+    "city": "Şehir",
+    "town": "İlçe",
+    "doorNo": "Kapı No",
+    "nameMin": "İsim en az 2 karakter olmalıdır",
+    "surnameMin": "Soyisim en az 2 karakter olmalıdır",
+    "phoneFormat": "Telefon numarası geçersiz",
+    "addressMin": "Adres en az 5 karakter olmalıdır",
+    "cityMin": "Şehir en az 2 karakter olmalıdır",
+    "townMin": "İlçe en az 2 karakter olmalıdır",
+    "phoneRequired": "Telefon numarası gerekli",
+    "nameRequired": "İsim gerekli",
+    "surnameRequired": "Soyisim gerekli",
+    "addressRequired": "Adres gerekli",
+    "cityRequired": "Şehir gerekli",
+    "townRequired": "İlçe gerekli"
   }
 }
