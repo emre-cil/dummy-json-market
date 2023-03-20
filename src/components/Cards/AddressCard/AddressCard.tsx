@@ -19,7 +19,7 @@ const AddressCard = ({ address, selectedAddress, setSelectedAddress }: any) => {
     <div
       className={classes.container}
       style={{
-        borderColor: selectedAddress === address?.id ? 'yellow' : 'grey',
+        borderColor: selectedAddress === address?.id ? '#f0c14b' : 'grey',
       }}
       onClick={() => setSelectedAddress && setSelectedAddress(address.id)}
     >

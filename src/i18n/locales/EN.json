@@ -21,7 +21,7 @@
     "empty": "Your cart is empty",
     "addToCart": "Add to cart",
     "removeBtn": "Remove from cart",
-    "removeAndFavBtn": "Return to cart and add to favorites"
+    "removeAndFavBtn": "Remove from cart and add to favorites"
   },
   "products": {
     "search": "Search",
